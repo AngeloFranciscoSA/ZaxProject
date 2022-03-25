@@ -14,7 +14,7 @@ data = {
         },
         "4": {
             "commission": 2,
-            "store": 1,
+            "store": "1",
         },
         "5": {
             "commission": 3,

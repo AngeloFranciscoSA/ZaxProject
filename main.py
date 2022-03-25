@@ -13,6 +13,7 @@ def main(motoboy):
     orders(motoboy1, motoboy2, motoboy3, motoboy4, motoboy5)
 
     if motoboy is "":
+        # return None
         motoboy1.getInformation()
         motoboy2.getInformation()
         motoboy3.getInformation()
@@ -20,15 +21,15 @@ def main(motoboy):
         motoboy5.getInformation()
 
     else:
-        if motoboy1.getId() == "1":
+        if motoboy1.getId() == motoboy:
             motoboy1.getInformation()
-        elif motoboy2.getId() == "2":
+        elif motoboy2.getId() == motoboy:
             motoboy2.getInformation()
-        elif motoboy3.getId() == "3":
+        elif motoboy3.getId() == motoboy:
             motoboy3.getInformation()
-        elif motoboy4.getId() == "4":
+        elif motoboy4.getId() == motoboy:
             motoboy4.getInformation()
-        elif motoboy5.getId() == "5":
+        elif motoboy5.getId() == motoboy:
             motoboy5.getInformation()
         else:
             print("Motoboy not found")
@@ -43,6 +44,8 @@ def orders(motoboy1, motoboy2=None, motoboy3=None, motoboy4=None, motoboy5=None)
     motoboys = [motoboy1, motoboy2, motoboy3, motoboy4, motoboy5]
     stores = [store1, store2, store3]
 
+
+
     while True:
         randomOrders = random.randrange(1, 5)
         store = random.choice(stores)
@@ -50,19 +53,14 @@ def orders(motoboy1, motoboy2=None, motoboy3=None, motoboy4=None, motoboy5=None)
 
         orders = store.getOrders()
 
+
         if randomOrders in orders:
             for a in motoboys:
                 if motoboy is not None:
-                    if motoboy.getStore() == "1" and randomOrders in orders:
-                        setOrders(motoboy, store1, 1, orders, randomOrders)
-                    elif motoboy.getStore() == "2" and randomOrders in orders:
-                        setOrders(motoboy, store2, 2, orders, randomOrders)
-                    elif motoboy.getStore() == "3" and randomOrders in orders:
-                        setOrders(motoboy, store3, 3, orders, randomOrders)
-
-                    else:
-                        if randomOrders in orders:
-                            setOrders(motoboy, store, store.getId(), orders, randomOrders)
+                    if str(motoboy.getStore()) == store.getId() and randomOrders in orders:
+                        setOrders(motoboy, store, store.getId(), orders, randomOrders)
+                    elif motoboy.getStore() == "all" and randomOrders in orders:
+                        setOrders(motoboy, store, store.getId(), orders, randomOrders)
 
         if len(store1.getOrders()) == 0 and len(store2.getOrders()) == 0 and len(store3.getOrders()) == 0:
             break
