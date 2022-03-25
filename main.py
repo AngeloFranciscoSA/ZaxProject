@@ -44,15 +44,11 @@ def orders(motoboy1, motoboy2=None, motoboy3=None, motoboy4=None, motoboy5=None)
     motoboys = [motoboy1, motoboy2, motoboy3, motoboy4, motoboy5]
     stores = [store1, store2, store3]
 
-
-
     while True:
         randomOrders = random.randrange(1, 5)
         store = random.choice(stores)
         motoboy = random.choice(motoboys)
-
         orders = store.getOrders()
-
 
         if randomOrders in orders:
             for a in motoboys:
