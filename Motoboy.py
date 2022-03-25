@@ -10,9 +10,8 @@ class Motoboy:
         self._orders = []
         self._salary = 0
 
-    def calculateSalary(self):
-        self._salary += len(self._orders) * self._commission
-        return self._salary
+    def calculateSalary(self, order):
+        self._salary += self._commission + (order['value'] * order['commission'])
 
     def getId(self):
         return self._id
@@ -22,7 +21,7 @@ class Motoboy:
         print('Store: {}'.format(self._store))
         print('Commission: {}'.format(self._commission))
         print('Orders: {}'.format(self._orders))
-        print('Salary: {}\n'.format(self.calculateSalary()))
+        print('Salary: {}\n'.format(self._salary))
 
     def getCommission(self):
         return self._commission
@@ -40,3 +39,4 @@ class Motoboy:
             'commission': orders['commission']
         }
         self._orders.append(order)
+        self.calculateSalary(order)
